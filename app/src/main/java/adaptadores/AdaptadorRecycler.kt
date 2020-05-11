@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.indumentaria.R
@@ -12,13 +14,25 @@ import modeloDeDatos.ModeloDeIndumentaria
 
 class AdaptadorRecycler(var datosFirebase: ArrayList<ModeloDeIndumentaria>, private val context: Context): RecyclerView.Adapter<AdaptadorRecycler.MainViewHolder>() {
 
+    var arrayProductos = ArrayList<String>(datosFirebase.size)
+
+    fun setListData(items: ArrayList<ModeloDeIndumentaria>){
+         datosFirebase = items
+        arrayProductos = ArrayList()
+        for (i in items.withIndex()){
+
+            //Log.e("esta", "vacio ${arrayProductos}")
+            arrayProductos.add("")
+
+        }
+    }
 
       // crear ViewHolder
       var viewHolder: RecyclerView.ViewHolder? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-         val view = LayoutInflater.from(context).inflate(R.layout.template_lista_fragmento, parent, false)
-        viewHolder = MainViewHolder(view)
-          return MainViewHolder(view)
+         val itemView = LayoutInflater.from(context).inflate(R.layout.template_lista_fragmento, parent, false)
+        viewHolder = MainViewHolder(itemView)
+          return MainViewHolder(itemView)
       }
 
     override fun getItemCount(): Int {
@@ -40,9 +54,17 @@ class AdaptadorRecycler(var datosFirebase: ArrayList<ModeloDeIndumentaria>, priv
 
         fun enlazarVista(indumenta: ModeloDeIndumentaria, position: Int){
             Glide.with(context).asBitmap().load(indumenta.imagen).into(itemView.imagenRecycler)
-            itemView.nombre.text = indumenta.nombre
-            itemView.precio.text = indumenta.precio
+            itemView.tvnombre.text = indumenta.nombre
+            itemView.tvprecio.text = indumenta.precio
 
+        }
+        var nombre: TextView? = null
+        var precio: TextView? = null
+        var imagen: ImageView? = null
+        init {
+            nombre = itemView.findViewById(R.id.tvnombre)
+            precio = itemView.findViewById(R.id.tvprecio)
+            imagen = itemView.findViewById(R.id.imagenRecycler)
         }
     }
 

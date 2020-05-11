@@ -17,9 +17,7 @@ class ActividadLista : AppCompatActivity(), FragmentoLista.FragmentoEnActivity {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actividad_lista)
 
-        //viewPager = findViewById(R.id.viewPager)
-        //tabLayout = findViewById(R.id.tabs)
-        //implementaré la funcion del viewPager
+
         configurarViewPager()
         tabs.setupWithViewPager(viewPager)
 

@@ -10,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.indumentaria.R
 import enlaceConFirebase.MainViewModel
@@ -37,12 +39,24 @@ class FragmentoLista : Fragment() {
         val vista = inflater.inflate(R.layout.fragment_fragmento_lista, container, false)
         recyclerView = vista.findViewById(R.id.recyclerView)
         recyclerView?.setHasFixedSize(true)
+        layoutManager = LinearLayoutManager(requireContext())
         recyclerView?.layoutManager = layoutManager
-        val indumentaria =ArrayList<ModeloDeIndumentaria>()
+        val indumentaria = ArrayList<ModeloDeIndumentaria>()
 
-        adaptador = AdaptadorRecycler(indumentaria, requireContext(), , container)
+        adaptador = AdaptadorRecycler(indumentaria, context!!)
+        recyclerView?.adapter = adaptador
 
+        observeData()
         return vista
+    }
+
+    private fun observeData(){
+
+        viewModel.fetchUserData().observe(viewLifecycleOwner, Observer {
+            adaptador!!.setListData(ArrayList(it))
+            adaptador!!.notifyDataSetChanged()
+
+        })
     }
     interface FragmentoEnActivity{
 
