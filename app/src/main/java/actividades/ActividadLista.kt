@@ -30,9 +30,5 @@ class ActividadLista : AppCompatActivity(), FragmentoLista.FragmentoEnActivity {
         viewPager.adapter = adaptador
     }
 
-    override fun ObtenerModeloDatos(modelo: ArrayList<String>) {
-        super.ObtenerModeloDatos(modelo)
-        var arreglo = ArrayList<ModeloDeIndumentaria>()
 
-    }
 }

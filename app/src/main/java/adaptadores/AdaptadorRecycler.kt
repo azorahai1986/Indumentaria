@@ -1,6 +1,7 @@
 package adaptadores
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,19 +50,27 @@ class AdaptadorRecycler(var datosFirebase: ArrayList<ModeloDeIndumentaria>, priv
 
                 val items = datosFirebase[position]
                 holder.enlazarVista(items, position)
-    }
-    inner class MainViewHolder(vista: View): RecyclerView.ViewHolder(vista){
+
+            }
+    inner class MainViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         fun enlazarVista(indumenta: ModeloDeIndumentaria, position: Int){
             Glide.with(context).asBitmap().load(indumenta.imagen).into(itemView.imagenRecycler)
             itemView.tvnombre.text = indumenta.nombre
-            itemView.tvprecio.text = indumenta.precio
+            itemView.tvprecio.text = "$ " + indumenta.precio
+            itemView.tvCategorias.text = indumenta.cate
+            itemView.tvSubCategorias.text = indumenta.sub
+
 
         }
+        var categoria: TextView? = null
+        var subCategoria: TextView? = null
         var nombre: TextView? = null
         var precio: TextView? = null
         var imagen: ImageView? = null
         init {
+            categoria = itemView.findViewById(R.id.tvCategorias)
+            subCategoria = itemView.findViewById(R.id.tvSubCategorias)
             nombre = itemView.findViewById(R.id.tvnombre)
             precio = itemView.findViewById(R.id.tvprecio)
             imagen = itemView.findViewById(R.id.imagenRecycler)
@@ -69,8 +78,3 @@ class AdaptadorRecycler(var datosFirebase: ArrayList<ModeloDeIndumentaria>, priv
     }
 
 }
-    interface OnItemClickListener{
-        fun onItemClicked(nombre: ModeloDeIndumentaria){
-
-        }
-    }

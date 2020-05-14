@@ -1,5 +1,6 @@
 package enlaceConFirebase
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,7 +20,10 @@ class Repo {
                  listData.add(indument)
              }
              mutableData.value = listData
-         }
+         }/*.addOnFailureListener {
+             Log.e("Error", it.toString())
+             Esto lo hice para probar si llega internet a la app.
+         }*/
          return mutableData
 
     }

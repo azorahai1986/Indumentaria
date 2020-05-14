@@ -24,7 +24,7 @@ import java.util.ArrayList
 class FragmentoLista : Fragment() {
     var listener:FragmentoEnActivity? = null  // del fragmento
     var recyclerView: RecyclerView? = null
-    var adaptador: AdaptadorRecycler? = null
+    private var adaptador: AdaptadorRecycler? = null
     var layoutManager: RecyclerView.LayoutManager? = null
 
     // aca inicializo el ViewModel
@@ -39,7 +39,7 @@ class FragmentoLista : Fragment() {
         val vista = inflater.inflate(R.layout.fragment_fragmento_lista, container, false)
         recyclerView = vista.findViewById(R.id.recyclerView)
         recyclerView?.setHasFixedSize(true)
-        layoutManager = LinearLayoutManager(requireContext())
+        layoutManager = LinearLayoutManager(activity)
         recyclerView?.layoutManager = layoutManager
         val indumentaria = ArrayList<ModeloDeIndumentaria>()
 
@@ -48,11 +48,12 @@ class FragmentoLista : Fragment() {
 
         observeData()
         return vista
+
     }
 
     private fun observeData(){
 
-        viewModel.fetchUserData().observe(viewLifecycleOwner, Observer {
+        viewModel.fetchUserData().observe(this.viewLifecycleOwner, Observer {
             adaptador!!.setListData(ArrayList(it))
             adaptador!!.notifyDataSetChanged()
 
@@ -60,9 +61,7 @@ class FragmentoLista : Fragment() {
     }
     interface FragmentoEnActivity{
 
-        fun ObtenerModeloDatos(modelo: ArrayList<String>){
 
-        }
 
     }
     override fun onAttach(context: Context) {
