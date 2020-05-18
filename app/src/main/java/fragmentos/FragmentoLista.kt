@@ -27,6 +27,26 @@ class FragmentoLista : Fragment() {
     private var adaptador: AdaptadorRecycler? = null
     var layoutManager: RecyclerView.LayoutManager? = null
 
+    /**
+     * idCAtegoria
+     */
+    var idCategoria: String? = null
+    /**
+     * newInstance fragment
+     */
+    companion object{
+        const val TAG = "FragmentoTag"
+        private const val ID_CAT = "ID_CAT"
+
+        fun newInstance(idCategoria: String): FragmentoLista{
+            val bn = Bundle()
+            bn.putString(ID_CAT, idCategoria)
+            val fr = FragmentoLista()
+            fr.arguments = bn
+            return  fr
+        }
+    }
+
     // aca inicializo el ViewModel
     private val viewModel by lazy { ViewModelProviders.of(this).get(MainViewModel::class.java) }
 
@@ -35,6 +55,9 @@ class FragmentoLista : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        idCategoria = arguments?.getString(ID_CAT)
+
 
         val vista = inflater.inflate(R.layout.fragment_fragmento_lista, container, false)
         recyclerView = vista.findViewById(R.id.recyclerView)
@@ -56,6 +79,13 @@ class FragmentoLista : Fragment() {
         viewModel.fetchUserData().observe(this.viewLifecycleOwner, Observer {
             adaptador!!.setListData(ArrayList(it))
             adaptador!!.notifyDataSetChanged()
+
+        })
+    }
+
+
+    private fun loadSubcategoria(){
+        viewModel.fetchSubCategoria(idCategoria!!).observe(this.viewLifecycleOwner, Observer {
 
         })
     }
