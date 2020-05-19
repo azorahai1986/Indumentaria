@@ -84,11 +84,7 @@ class FragmentoLista : Fragment() {
     }
 
 
-    private fun loadSubcategoria(){
-        viewModel.fetchSubCategoria(idCategoria!!).observe(this.viewLifecycleOwner, Observer {
 
-        })
-    }
     interface FragmentoEnActivity{
 
 

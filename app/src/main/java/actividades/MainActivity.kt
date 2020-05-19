@@ -24,21 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         // otra forma de darle click a varios boton o cardView que cumplan la misma accion.
-        // en este caso van al siguiente activity
-    /*    val clickListener: View.OnClickListener = View.OnClickListener { view ->
-            when (view.id) {
-                R.id.cardViewPromo -> IrAlActivity()
-                R.id.cardViewRemeras -> IrAlActivity()
-                R.id.cardViewCalsas -> IrAlActivity()
-                R.id.cardViewSweaters -> IrAlActivity()
-            }
-        }
-        cardViewPromo.setOnClickListener(clickListener)
-        cardViewRemeras.setOnClickListener(clickListener)
-        cardViewCalsas.setOnClickListener(clickListener)
-        cardViewSweaters.setOnClickListener(clickListener)*/
-
         adapter = AdapterCategoria(mutableListOf(), this)
         recycler_categoria.layoutManager = GridLayoutManager(this, 2)
         recycler_categoria.adapter = adapter
@@ -53,9 +38,5 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun IrAlActivity() {
-        val intent = Intent(this, ActividadLista::class.java)
-        startActivity(intent)
-    }
 
 }
