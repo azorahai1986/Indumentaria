@@ -1,7 +1,8 @@
 package modeloDeDatos
 
 data class SubCategoria(var id: String,
+                        var cate: String,
                         var sub: String,
-                        var imageSub: String){
-    constructor():this("","","")
+                        var imagen: String){
+    constructor():this("","","","")
 }

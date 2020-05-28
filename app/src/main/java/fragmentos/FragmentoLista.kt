@@ -5,11 +5,13 @@ import adaptadores.AdaptadorRecycler
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,32 +19,36 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.indumentaria.R
 import enlaceConFirebase.MainViewModel
 import modeloDeDatos.ModeloDeIndumentaria
+import modeloDeDatos.SubCategoria
 import java.lang.ClassCastException
-import java.util.ArrayList
+import kotlin.collections.ArrayList
 
 
 class FragmentoLista : Fragment() {
     var listener:FragmentoEnActivity? = null  // del fragmento
     var recyclerView: RecyclerView? = null
-    private var adaptador: AdaptadorRecycler? = null
+    private var adaptadorLista: AdaptadorRecycler? = null
     var layoutManager: RecyclerView.LayoutManager? = null
 
     /**
      * idCAtegoria
      */
-    var idCategoria: String? = null
+    var idSubCategoria: String? = null
     /**
      * newInstance fragment
      */
     companion object{
         const val TAG = "FragmentoTag"
-        private const val ID_CAT = "ID_CAT"
 
-        fun newInstance(idCategoria: String): FragmentoLista{
+        private const val ID_LIST = "ID_LIST"
+
+        fun newInstanceList(idSubCategoria: String): FragmentoLista{
             val bn = Bundle()
-            bn.putString(ID_CAT, idCategoria)
+            bn.putString(ID_LIST, idSubCategoria)
             val fr = FragmentoLista()
             fr.arguments = bn
+            Log.e("ID_LIST", bn.toString())
+
             return  fr
         }
     }
@@ -56,18 +62,17 @@ class FragmentoLista : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        idCategoria = arguments?.getString(ID_CAT)
+        idSubCategoria = arguments?.getString(ID_LIST)
 
 
         val vista = inflater.inflate(R.layout.fragment_fragmento_lista, container, false)
         recyclerView = vista.findViewById(R.id.recyclerView)
+        adaptadorLista = AdaptadorRecycler(arrayListOf(), context as FragmentActivity)
         recyclerView?.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(activity)
         recyclerView?.layoutManager = layoutManager
-        val indumentaria = ArrayList<ModeloDeIndumentaria>()
 
-        adaptador = AdaptadorRecycler(indumentaria, context!!)
-        recyclerView?.adapter = adaptador
+        recyclerView?.adapter = adaptadorLista
 
         observeData()
         return vista
@@ -76,9 +81,9 @@ class FragmentoLista : Fragment() {
 
     private fun observeData(){
 
-        viewModel.fetchUserData().observe(this.viewLifecycleOwner, Observer {
-            adaptador!!.setListData(ArrayList(it))
-            adaptador!!.notifyDataSetChanged()
+        viewModel.fetchUserData(idSubCategoria!!).observe(this.viewLifecycleOwner, Observer {
+            adaptadorLista!!.mutableListModel = it as ArrayList<ModeloDeIndumentaria>
+            adaptadorLista!!.notifyDataSetChanged()
 
         })
     }

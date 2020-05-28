@@ -32,10 +32,10 @@ class AdapterCategoria(var mutableList: MutableList<Categoria>, val activity: Fr
             .load(cat.imagen)
             .into(holder.itemView.image_template_categoria)
 
-       /*  para darle click a una imagen o grid
-       holder.itemView.image_template_categoria.setOnClickListener {
-            Toast.makeText(activity,"Click imagen", Toast.LENGTH_SHORT).show()
-        }*/
+        /*  para darle click a una imagen o grid
+        holder.itemView.image_template_categoria.setOnClickListener {
+             Toast.makeText(activity,"Click imagen", Toast.LENGTH_SHORT).show()
+         }*/
 
         holder.itemView.card_template_categoria.setOnClickListener {
             /**
@@ -44,10 +44,11 @@ class AdapterCategoria(var mutableList: MutableList<Categoria>, val activity: Fr
             Toast.makeText(activity,"Click card${cat.id}", Toast.LENGTH_SHORT).show()
             activity.startActivity(
                 Intent(activity, ActividadLista::class.java)
+
                     /**
                      * putextra
                      */
-                    .putExtra(ActividadLista.ID_SUBCATEGORIA, cat.id)
+                    .putExtra(ActividadLista.ID_CATEGORIA, cat.id)
             )
 
         }

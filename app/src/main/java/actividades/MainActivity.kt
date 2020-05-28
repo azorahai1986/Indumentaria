@@ -4,6 +4,7 @@ import adaptadores.AdapterCategoria
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.fetchCategoria().observe(this, Observer {
             adapter?.mutableList = it
             adapter?.notifyDataSetChanged()
+            //Log.e("TagCategoria", it.toString())
+
         })
     }
 

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imagenRecycler"
+        android:id="@+id/imagen_template_modelo"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:src="@drawable/calsa"/>
@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/tvnombre"
+        android:id="@+id/nombre_template_model"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Calsa Deportiva"
@@ -23,7 +23,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
     <TextView
-        android:id="@+id/tvprecio"
+        android:id="@+id/precio_template_model"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="$450"
@@ -37,7 +37,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvCategorias"
+            android:id="@+id/categorias_template_model"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Deportivo"
@@ -45,7 +45,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
         <TextView
-            android:id="@+id/tvSubCategorias"
+            android:id="@+id/subCate_template_model"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Informal"
