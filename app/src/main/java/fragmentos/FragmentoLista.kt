@@ -38,7 +38,7 @@ class FragmentoLista : Fragment() {
      * newInstance fragment
      */
     companion object{
-        const val TAG = "FragmentoTag"
+        const val TAG = "FragmentoLista"
 
         private const val ID_LIST = "ID_LIST"
 
