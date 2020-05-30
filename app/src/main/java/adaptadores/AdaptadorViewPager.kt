@@ -1,9 +1,10 @@
 package adaptadores
 
-import android.service.quicksettings.Tile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import fragmentos.FragmentoLista
+import fragmentos.FragmentoSubCategorias
 
 class AdaptadorViewPager(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager) {
 
@@ -22,7 +23,7 @@ class AdaptadorViewPager(fragmentManager: FragmentManager): FragmentPagerAdapter
         return fragmentList?.size!!
     }
      // esta función la incluiré en la actividad. dentro de configurarViewPager
-    fun agregarFragmento (fragment: Fragment, title: String){
+    fun agregarFragmento (fragment: FragmentoSubCategorias, title: String){
         fragmentList?.add(fragment)!!
         fragmentTitleList?.add(title)!!
 
