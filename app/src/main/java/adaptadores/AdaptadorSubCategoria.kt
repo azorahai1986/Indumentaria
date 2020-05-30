@@ -38,13 +38,10 @@ class AdaptadorSubCategoria(var mutableListSub: MutableList<SubCategoria>, val a
         //enviaré info a la siguiente lista de modelos
        holder.itemView.card_template_subcategoria.setOnClickListener {
            Toast.makeText(activity, subCat.id, Toast.LENGTH_SHORT).show()
-           val fragmentTransaction = activity.supportFragmentManager.beginTransaction()
-               fragmentTransaction.replace(R.id.contenedor, FragmentoLista.newInstanceList(subCat.id))
-               fragmentTransaction.commit()
-
-
-
-
+           activity.supportFragmentManager.beginTransaction()
+               .replace(R.id.contenedor_lista, FragmentoLista.newInstanceList(subCat.id))
+               .addToBackStack(FragmentoLista.TAG)
+               .commit()
 
         }
 
