@@ -3,8 +3,9 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.example.indumentaria">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <dist:module dist:instant="true" />
 
     <application
@@ -14,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="actividades.ActividadLista"></activity>
+        <activity android:name="actividades.ActividadEditor"></activity>
+        <activity android:name="actividades.ActividadRegistrarse" />
+        <activity android:name="actividades.ActividadLista" />
         <activity android:name="actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

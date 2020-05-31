@@ -27,9 +27,9 @@ class AdaptadorRecycler(var mutableListModel: ArrayList<ModeloDeIndumentaria>, v
     override fun onBindViewHolder(holder: AdaptadorRecycler.ViewHolderModel, position: Int) {
                 val modelosFb = mutableListModel[position]
                 holder.itemView.nombre_template_model.text = modelosFb.nombre
-                holder.itemView.precio_template_model.text = modelosFb.nombre
-                holder.itemView.categorias_template_model.text = modelosFb.nombre
-                holder.itemView.subCate_template_model.text = modelosFb.nombre
+                holder.itemView.precio_template_model.text = modelosFb.precio
+                holder.itemView.categorias_template_model.text = modelosFb.cate
+                holder.itemView.subCate_template_model.text = modelosFb.sub
                 Glide.with(activity).load(modelosFb.imagen).into(holder.itemView.imagen_template_modelo)
 
 

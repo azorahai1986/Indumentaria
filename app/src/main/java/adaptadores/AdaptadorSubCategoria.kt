@@ -1,6 +1,7 @@
 package adaptadores
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +12,11 @@ import com.bumptech.glide.Glide
 import com.example.indumentaria.R
 import fragmentos.FragmentoLista
 import kotlinx.android.synthetic.main.template_subcategoria.view.*
+import modeloDeDatos.ModeloDeIndumentaria
 import modeloDeDatos.SubCategoria
 import java.util.zip.Inflater
 
 class AdaptadorSubCategoria(var mutableListSub: MutableList<SubCategoria>, val activity: FragmentActivity):RecyclerView.Adapter<AdaptadorSubCategoria.ViewHolderSubCategoria>() {
-
 
 
    inner class ViewHolderSubCategoria (itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -27,10 +28,9 @@ class AdaptadorSubCategoria(var mutableListSub: MutableList<SubCategoria>, val a
 
     override fun getItemCount(): Int = mutableListSub.size
 
-
     override fun onBindViewHolder(holder: AdaptadorSubCategoria.ViewHolderSubCategoria, position: Int) {
         val subCat = mutableListSub[position]
-
+        Log.e("OnBindAdapter", mutableListSub.toString())
 
         holder.itemView.text_nombre_template_subcategoria.text = subCat.sub
         Glide.with(activity).load(subCat.imagen).into(holder.itemView.image_template_subcategoria)

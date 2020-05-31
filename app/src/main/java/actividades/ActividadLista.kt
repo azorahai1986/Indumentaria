@@ -2,7 +2,6 @@ package actividades
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import adaptadores.AdaptadorViewPager
 import android.content.Context
 import android.util.Log
 import fragmentos.FragmentoLista
@@ -16,7 +15,7 @@ import modeloDeDatos.ModeloDeIndumentaria
 import java.lang.ClassCastException
 import java.util.ArrayList
 
-class ActividadLista : AppCompatActivity(), FragmentoSubCategorias.FragmentoEnActividad, FragmentoLista.FragmentoEnActivity {
+class ActividadLista : AppCompatActivity(), FragmentoLista.FragmentoEnActivity {
 
     private var idCategoria: String? = null
     //private var idSubCategoria: String? = null
@@ -37,29 +36,12 @@ class ActividadLista : AppCompatActivity(), FragmentoSubCategorias.FragmentoEnAc
         Log.e("ActividadLista", idCategoria.toString())
 
         supportFragmentManager.beginTransaction()
-            .replace(
-                R.id.contenedor_lista,
+            .replace(R.id.contenedor_lista,
                 FragmentoSubCategorias.newInstanceSub(idCategoria!!),
-                FragmentoSubCategorias.TAGSUB
-            )
-            .commit()
+                FragmentoSubCategorias.TAGSUB).commit()
 
-        //idSubCategoria = intent.getStringExtra(ID_SUBCATEGORIA)
 
-     //   configurarViewPager()
-        //tabs.setupWithViewPager(viewPager)
 
-    }
-
-      // esta funcion es para crear las pestañas del viewPager
-    fun configurarViewPager(){
-    /*    val adaptador = AdaptadorViewPager(supportFragmentManager)
-          // en el primer fragmento tome la instancia del idCategoria. o sea. de la lista de categorias.
-        adaptador.agregarFragmento(FragmentoSubCategorias.newInstanceSub(idCategoria!!), "FragmentoLista")
-        adaptador.agregarFragmento(FragmentoPromo(), "FragmentoPromo")
-        viewPager.adapter = adaptador
-
-     */
     }
 
 

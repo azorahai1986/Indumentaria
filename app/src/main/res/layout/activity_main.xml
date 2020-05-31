@@ -31,11 +31,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F16337"
-                app:layout_collapseMode="parallax" />
+                app:layout_collapseMode="parallax"
+                android:elevation="4dp"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -44,176 +46,15 @@
         android:layout_marginTop="20dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
     </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.core.widget.NestedScrollView
+    <Button
+        android:id="@+id/btAdministrador"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:visibility="gone"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Categorias"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textSize="28dp"
-                    android:textAlignment="center"/>
-            </LinearLayout>
+        android:layout_height="20dp"
+        android:layout_gravity="bottom"
+        style="@style/Theme.AppCompat.Light"
+        android:text="Administrador"
+        android:textColor="#FFFFFF"
+        android:background="#F16337"/>
 
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:rowCount="3"
-                android:visibility="gone"
-                android:alignmentMode="alignMargins"
-                android:columnOrderPreserved="false">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewPromo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:src="@drawable/indumentaria"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="promociones"
-                            android:textSize="18dp"
-                            android:textColor="#6f6f6f"/>
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewRemeras"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:src="@drawable/remeras"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="Remeras"
-                            android:textSize="18dp"
-                            android:textColor="#6f6f6f"/>
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewCalsas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/calsa" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="Calsas"
-                            android:textColor="#6f6f6f"
-                            android:textSize="18dp" />
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewSweaters"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/sweater" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="Sweaters"
-                            android:textColor="#6f6f6f"
-                            android:textSize="18dp" />
-
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </GridLayout>
-
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

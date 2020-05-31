@@ -24,7 +24,7 @@ import java.lang.ClassCastException
 
 class FragmentoSubCategorias : Fragment() {
     private val viewModel by lazy { ViewModelProviders.of(this).get(MainViewModel::class.java) }
-    var listener: FragmentoEnActividad? = null
+    //var listener: FragmentoEnActividad? = null
 
     var recyclerSubCat: RecyclerView? = null
     var adaptadorSubCat: AdaptadorSubCategoria? = null
@@ -46,7 +46,7 @@ class FragmentoSubCategorias : Fragment() {
             bun.putString(ID_SUBCAT, idCategoria)
             val frag = FragmentoSubCategorias()
             frag.arguments = bun
-            Log.e("ID_SUBCAT", bun.toString())
+            //Log.e("ID_SUBCAT", bun.toString())
             return frag
 
 
@@ -60,7 +60,7 @@ class FragmentoSubCategorias : Fragment() {
     ): View? {
 
         idCategoria = arguments?.getString(ID_SUBCAT)
-        Log.e("ID_SUBCAT_EN_ONCREATE", idCategoria.toString())
+       // Log.e("ID_SUBCAT_EN_ONCREATE", idCategoria.toString())
 
 
         // Inflate the layout for this fragment
@@ -92,22 +92,6 @@ class FragmentoSubCategorias : Fragment() {
 
         })
 
-    }
-    interface FragmentoEnActividad{
-
-
-
-    }
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        // el linstener será el que envie o me deje acceder a la actividad. su contexto es la interface
-        // lo hare mediante un try catch. en el caso que haya un error el classCastExeption me mostrará el error
-        try {
-            listener = context as FragmentoEnActividad
-
-        }catch (e: ClassCastException){
-            throw ClassCastException(context.toString() + "debes implementar interfaz") // en el main debo llamar a la interface
-        }
     }
 
 
